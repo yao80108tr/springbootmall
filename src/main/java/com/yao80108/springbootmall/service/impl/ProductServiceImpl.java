@@ -10,19 +10,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductDao porductDao;
+    private ProductDao productDao;
     @Override
     public Product getProductById(Integer productId) {
-        return porductDao.getProductById(productId);
+        return productDao.getProductById(productId);
     }
 
     @Override
     public Integer createProduct(ProductResquest productResquest) {
-        return porductDao.createProduct(productResquest);
+        return productDao.createProduct(productResquest);
     }
 
     @Override
     public void updateProduct(Integer productId, ProductResquest productResquest) {
-        porductDao.updateProduct(productId, productResquest);
+        productDao.updateProduct(productId, productResquest);
+    }
+
+    @Override
+    public void deleteProductById(Integer productId) {
+        productDao.deleteProductById(productId);
     }
 }
