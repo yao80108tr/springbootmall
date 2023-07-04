@@ -1,5 +1,6 @@
 package com.yao80108.springbootmall.dao;
 
+import com.yao80108.springbootmall.dto.UserLoginRequest;
 import com.yao80108.springbootmall.dto.UserRegisterRequest;
 import com.yao80108.springbootmall.model.User;
 
