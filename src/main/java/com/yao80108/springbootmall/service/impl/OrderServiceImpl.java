@@ -5,6 +5,7 @@ import com.yao80108.springbootmall.dao.ProductDao;
 import com.yao80108.springbootmall.dao.UserDao;
 import com.yao80108.springbootmall.dto.BuyItem;
 import com.yao80108.springbootmall.dto.CreateOrderRequest;
+import com.yao80108.springbootmall.dto.OrderQueryParams;
 import com.yao80108.springbootmall.model.Order;
 import com.yao80108.springbootmall.model.OrderItem;
 import com.yao80108.springbootmall.model.Product;
@@ -79,5 +80,20 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> orderItemList = orderDao.getOrderItemByOrderId(orderId);
         order.setOrderItemList(orderItemList);
         return order;
+    }
+
+    @Override
+    public Integer countOrder(OrderQueryParams orderQueryParams) {
+        return orderDao.countOrder(orderQueryParams);
+    }
+
+    @Override
+    public List<Order> getOrders(OrderQueryParams orderQueryParams) {
+        List<Order> orderList = orderDao.getOrders(orderQueryParams);
+        for(Order order : orderList){
+            List<OrderItem> orderItemList = orderDao.getOrderItemByOrderId(order.getOrderId());
+            order.setOrderItemList(orderItemList);
+        }
+        return orderList;
     }
 }
